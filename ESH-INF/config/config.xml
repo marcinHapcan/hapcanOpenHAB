@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-description:config-descriptions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:config-description="http://eclipse.org/smarthome/schemas/config-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/config-description/v1.0.0 http://eclipse.org/smarthome/schemas/config-description-1.0.0.xsd">
+
+	<config-description uri="thing-type:hapcan:ethernet_bridge">
+		<parameter name="host" type="text" required="true">
+			<label>Host or IP</label>
+			<description>IP or hostname of the HAPCAN Ethernet Interface.</description>
+			<context>network-address</context>
+		</parameter>
+		<parameter name="port" type="integer" min="1" max="65335">
+			<label>Port number</label>
+			<description>TCP port of the Interface.</description>
+			<default>1001</default>
+		</parameter>
+		<parameter name="moduleNumber" type="integer" min="1" max="254">
+			<label>Controller module number</label>
+			<description>Virtual module number which identify OpenHAB controller.</description>
+			<default>240</default>
+		</parameter>
+		<parameter name="groupNumber" type="integer" min="1" max="254">
+			<label>Controller group number</label>
+			<description>Virtual group number which identify OpenHAB controller.</description>
+			<default>240</default>
+		</parameter>
+		<parameter name="keepAliveDelay" type="integer" min="30" max="600">
+			<label>Keep alive delay (seconds)</label>
+			<description>Keep alive delay (seconds)</description>
+			<default>120</default>
+		</parameter>
+		<parameter name="initDelay" type="integer" min="100" max="2000">
+			<label>@text/parameter.initdelay.label</label>
+			<description>@text/parameter.initdelay.description</description>
+			<default>500</default>
+			<!-- <advanced>true</advanced> -->
+		</parameter>
+		<parameter name="connectionTimeout" type="integer" min="20" max="5000">
+			<label>Connection timeout (miliseconds)</label>
+			<default>1000</default>
+		</parameter>
+	</config-description>
+
+	<config-description uri="thing-type:hapcan:device">
+		<parameter name="moduleNumber" type="integer" min="1" max="254">
+			<label>Module number</label>
+			<description>Module number which identify device.</description>
+		</parameter>
+		<parameter name="groupNumber" type="integer" min="1" max="254">
+			<label>Group number</label>
+			<description>Group number which identify device.</description>
+		</parameter>
+	</config-description>
+
+	<config-description uri="thing-type:hapcan:dimmer">
+		<parameter name="moduleNumber" type="integer" min="1" max="254">
+			<label>Module number</label>
+			<description>Module number which identify device.</description>
+		</parameter>
+		<parameter name="groupNumber" type="integer" min="1" max="254">
+			<label>Group number</label>
+			<description>Group number which identify device.</description>
+		</parameter>
+		<parameter name="upDownStep" type="integer" min="1" max="100">
+			<label>Up/Down Step</label>
+			<description>Minimal step of dimmer value increase/decrease.</description>
+		</parameter>
+	</config-description>
+
+</config-description:config-descriptions>

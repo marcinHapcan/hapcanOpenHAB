@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="hapcan"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+	<!-- Sample Thing Type -->
+	<bridge-type id="ethernet_interface">
+		<label>HAPCAN Ethernet Interface</label>
+		<description>Ethernet communication module for HAPCAN</description>
+
+		<channels>
+			<channel id="bus_voltage" typeId="bus_voltage" />
+			<channel id="cpu_voltage" typeId="cpu_voltage" />
+		</channels>
+
+		<properties>
+			<property name="vendor">HAPCAN (hapcan.com)</property>
+			<property name="modelId">UNIV 3.102.0.x</property>
+		</properties>
+		<representation-property>serialNumber</representation-property>
+
+		<config-description-ref uri="thing-type:hapcan:ethernet_bridge" />
+
+	</bridge-type>
+
+
+
+</thing:thing-descriptions>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="hapcan"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="blinds_controller_3channels">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="ethernet_interface" />
+		</supported-bridge-type-refs>
+
+		<label>HAPCAN 3-channel blinds controller (UNIV 3.0.7.x)</label>
+		<description>3-channel blind controller for AC motors</description>
+
+		<channels>
+			<channel id="blind1" typeId="blind-type" />
+			<channel id="blind2" typeId="blind-type" />
+			<channel id="blind3" typeId="blind-type" />
+			<channel id="blind_move1" typeId="blind_move-type" />
+			<channel id="blind_move2" typeId="blind_move-type" />
+			<channel id="blind_move3" typeId="blind_move-type" />
+			<channel id="bus_voltage" typeId="bus_voltage" />
+			<channel id="cpu_voltage" typeId="cpu_voltage" />
+		</channels>
+
+		<properties>
+			<property name="vendor">HAPCAN (hapcan.com)</property>
+			<property name="modelId">UNIV 3.0.7.x</property>
+		</properties>
+		<representation-property>Serial Number</representation-property>
+
+		<config-description-ref uri="thing-type:hapcan:device" />
+
+	</thing-type>
+
+	<thing-type id="blinds_controller_4channels">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="ethernet_interface" />
+		</supported-bridge-type-refs>
+
+		<label>HAPCAN 4-channel blinds controller (UNIV 1.0.7.1)</label>
+		<description>4-channel blind controller for AC motors</description>
+
+		<channels>
+			<channel id="blind1" typeId="blind-type" />
+			<channel id="blind2" typeId="blind-type" />
+			<channel id="blind3" typeId="blind-type" />
+			<channel id="blind4" typeId="blind-type" />
+			<channel id="blind_move1" typeId="blind_move-type" />
+			<channel id="blind_move2" typeId="blind_move-type" />
+			<channel id="blind_move3" typeId="blind_move-type" />
+			<channel id="blind_move4" typeId="blind_move-type" />
+			<channel id="bus_voltage" typeId="bus_voltage" />
+			<channel id="cpu_voltage" typeId="cpu_voltage" />
+		</channels>
+
+		<properties>
+			<property name="vendor">HAPCAN (hapcan.com)</property>
+			<property name="modelId">UNIV 1.0.7.1</property>
+		</properties>
+		<representation-property>Serial Number</representation-property>
+
+		<config-description-ref uri="thing-type:hapcan:device" />
+
+	</thing-type>
+
+</thing:thing-descriptions>

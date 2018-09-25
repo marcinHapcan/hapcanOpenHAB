@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="hapcan"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="temperature_sensor_1channel">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="ethernet_interface" />
+		</supported-bridge-type-refs>
+
+		<label>HAPCAN 1-channel temperature sensor (UNIV 1.0.4.0)</label>
+		<description>Module with 1 input for DS18B20 temperature sensor</description>
+
+		<channels>
+			<channel id="temperature" typeId="temperature" />
+			<channel id="thermostat_position" typeId="input" />
+			<channel id="thermostat_state" typeId="input" />
+			<channel id="bus_voltage" typeId="bus_voltage" />
+			<channel id="cpu_voltage" typeId="cpu_voltage" />
+		</channels>
+
+		<properties>
+			<property name="vendor">HAPCAN (hapcan.com)</property>
+			<property name="modelId">UNIV 1.0.4.0</property>
+		</properties>
+		<representation-property>Serial Number</representation-property>
+
+		<config-description-ref uri="thing-type:hapcan:device" />
+	</thing-type>
+
+</thing:thing-descriptions>

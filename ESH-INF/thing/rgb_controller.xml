@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="hapcan"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="rgb_controller">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="ethernet_interface" />
+		</supported-bridge-type-refs>
+
+		<label>HAPCAN RGB LED Controller</label>
+		<description>Dimmer with 3 RGB channels (dimmer1-3) and master channel (dimmer4)</description>
+
+		<channels>
+			<channel id="dimmer1" typeId="dimmer" />
+			<channel id="dimmer2" typeId="dimmer" />
+			<channel id="dimmer3" typeId="dimmer" />
+			<channel id="dimmer4" typeId="dimmer" />
+			<channel id="master_relay" typeId="input" />
+			<channel id="bus_voltage" typeId="bus_voltage" />
+			<channel id="cpu_voltage" typeId="cpu_voltage" />
+		</channels>
+
+		<properties>
+			<property name="vendor">HAPCAN (hapcan.com)</property>
+		</properties>
+		<representation-property>Serial Number</representation-property>
+
+		<config-description-ref uri="thing-type:hapcan:dimmer" />
+
+	</thing-type>
+
+</thing:thing-descriptions>

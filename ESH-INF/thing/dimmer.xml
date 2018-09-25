@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="hapcan"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="dimmer">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="ethernet_interface" />
+		</supported-bridge-type-refs>
+
+		<label>HAPCAN DIMMER RC</label>
+		<description>1-channel light dimmer for resistive and capacitive loads</description>
+
+		<channels>
+			<channel id="dimmer" typeId="dimmer" />
+			<channel id="bus_voltage" typeId="bus_voltage" />
+			<channel id="cpu_voltage" typeId="cpu_voltage" />
+		</channels>
+
+		<properties>
+			<property name="vendor">HAPCAN (hapcan.com)</property>
+		</properties>
+		<representation-property>Serial Number</representation-property>
+
+		<config-description-ref uri="thing-type:hapcan:dimmer" />
+
+	</thing-type>
+
+</thing:thing-descriptions>
