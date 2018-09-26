@@ -50,7 +50,7 @@ public class HapcanDiscoveryService extends AbstractDiscoveryService implements 
      * Creates the discovery service for the given handler
      */
     public HapcanDiscoveryService(HapcanBridgeHandler bridge) {
-        super(DEVICES_THING_TYPES_UIDS, DISCOVER_TIMEOUT_SECONDS, true);
+        super(DEVICES_THING_TYPES_UIDS, 0, true);
         this.bridge = bridge;
     }
 
@@ -61,11 +61,19 @@ public class HapcanDiscoveryService extends AbstractDiscoveryService implements 
 
         try {
             bridge.startDiscovery(this);
-            bridge.sendMessage(new HapcanSystemCommand(HapcanFrameType.HardwareTypeRequestToGroup, 0));
-            Thread.sleep(500);
-            bridge.sendMessage(new HapcanSystemCommand(HapcanFrameType.FirmwareTypeRequestToGroup, 0));
-            Thread.sleep(500);
-            bridge.sendMessage(new HapcanSystemCommand(HapcanFrameType.DescriptionRequestToGroup, 0));
+
+            for (int group = bridge.config.minGroupNumber; group <= bridge.config.maxGroupNumber; group++) {
+                bridge.sendMessage(new HapcanSystemCommand(HapcanFrameType.HardwareTypeRequestToGroup, group << 8));
+                Thread.sleep(500);
+                bridge.sendMessage(new HapcanSystemCommand(HapcanFrameType.FirmwareTypeRequestToGroup, group << 8));
+                Thread.sleep(500);
+                bridge.sendMessage(new HapcanSystemCommand(HapcanFrameType.DescriptionRequestToGroup, group << 8));
+
+                Thread.sleep(bridge.config.delayBetweenGroups);
+            }
+
+            stopScan();
+
         } catch (InterruptedException e) {
             // Ignore
         }

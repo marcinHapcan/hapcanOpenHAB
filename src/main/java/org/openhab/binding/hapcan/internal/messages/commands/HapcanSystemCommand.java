@@ -63,8 +63,4 @@ public class HapcanSystemCommand extends HapcanBaseMessage implements HapcanComm
         this.srcNodeId = srcNodeId;
     }
 
-    // @Override
-    // public void convertFromState(String channelId, Type type) throws HapcanUnsupportedChannelException {
-    // throw new UnsupportedOperationException();
-    // }
 }

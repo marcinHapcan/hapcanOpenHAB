@@ -15,12 +15,12 @@
 			<description>TCP port of the Interface.</description>
 			<default>1001</default>
 		</parameter>
-		<parameter name="moduleNumber" type="integer" min="1" max="254">
+		<parameter name="moduleNumber" type="integer" min="1" max="255">
 			<label>Controller module number</label>
 			<description>Virtual module number which identify OpenHAB controller.</description>
 			<default>240</default>
 		</parameter>
-		<parameter name="groupNumber" type="integer" min="1" max="254">
+		<parameter name="groupNumber" type="integer" min="1" max="255">
 			<label>Controller group number</label>
 			<description>Virtual group number which identify OpenHAB controller.</description>
 			<default>240</default>
@@ -40,6 +40,20 @@
 			<label>Connection timeout (miliseconds)</label>
 			<default>1000</default>
 		</parameter>
+		
+        <parameter name="minGroupNumber" type="integer" min="1" max="255">
+            <label>HAPCAN Network exporation - min group number</label>
+            <default>1</default>
+        </parameter>
+        <parameter name="maxGroupNumber" type="integer" min="1" max="255">
+            <label>HAPCAN Network exporation - max group number</label>
+            <default>2</default>
+        </parameter>
+        <parameter name="delayBetweenGroups" type="integer" min="50" max="3000">
+            <label>Delay between group commands (miliseconds)</label>
+            <default>1000</default>
+        </parameter>
+		
 	</config-description>
 
 	<config-description uri="thing-type:hapcan:device">

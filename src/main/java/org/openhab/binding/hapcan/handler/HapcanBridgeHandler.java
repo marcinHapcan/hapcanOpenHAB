@@ -56,6 +56,8 @@ public class HapcanBridgeHandler extends BaseBridgeHandler implements Connection
     private int virtualNodeId;
     HapcanDeviceInfo deviceInfo = new HapcanDeviceInfo();
 
+    public HapcanBridgeConfig config;
+
     private AtomicBoolean connectionInitialized = new AtomicBoolean(false);
     private AtomicBoolean refreshAllowed = new AtomicBoolean(true);
     private ScheduledFuture<?> connectJob;
@@ -98,7 +100,7 @@ public class HapcanBridgeHandler extends BaseBridgeHandler implements Connection
         connectionInitialized.set(false);
         refreshAllowed.set(true);
 
-        HapcanBridgeConfig config = getConfigAs(HapcanBridgeConfig.class);
+        config = getConfigAs(HapcanBridgeConfig.class);
         virtualNodeId = config.groupNumber << 8 | config.moduleNumber;
         int connectionTimeout = config.connectionTimeout;
 
@@ -135,13 +137,16 @@ public class HapcanBridgeHandler extends BaseBridgeHandler implements Connection
 
                 Thread.sleep(100);
 
-                sendMessage(new HapcanSystemCommand(HapcanFrameType.HardwareTypeRequestToGroup, 0));
-                Thread.sleep(100);
-                sendMessage(new HapcanSystemCommand(HapcanFrameType.FirmwareTypeRequestToGroup, 0));
-                Thread.sleep(100);
-                sendMessage(new HapcanSystemCommand(HapcanFrameType.DescriptionRequestToGroup, 0));
-                Thread.sleep(100);
-                sendMessage(new HapcanSystemCommand(HapcanFrameType.DescriptionRequestToGroup, 0));
+                for (int group = config.minGroupNumber; group <= config.maxGroupNumber; group++) {
+                    sendMessage(new HapcanSystemCommand(HapcanFrameType.HardwareTypeRequestToGroup, group << 8));
+                    Thread.sleep(500);
+                    sendMessage(new HapcanSystemCommand(HapcanFrameType.FirmwareTypeRequestToGroup, group << 8));
+                    Thread.sleep(500);
+                    sendMessage(new HapcanSystemCommand(HapcanFrameType.DescriptionRequestToGroup, group << 8));
+
+                    Thread.sleep(config.delayBetweenGroups);
+                }
+
             } catch (InterruptedException ignored) {
                 logger.debug("InterruptedException - This can be ignored, the thread will end anyway");
                 // This can be ignored, the thread will end anyway

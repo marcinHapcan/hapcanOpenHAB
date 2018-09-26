@@ -31,4 +31,8 @@ public class HapcanBridgeConfig {
     public int keepAliveDelay;
     public int initDelay;
 
+    public int minGroupNumber;
+    public int maxGroupNumber;
+    public int delayBetweenGroups;
+
 }
