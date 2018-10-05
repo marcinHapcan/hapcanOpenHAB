@@ -3,7 +3,7 @@
 	xmlns:binding="http://eclipse.org/smarthome/schemas/binding/v1.0.0"
 	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/binding/v1.0.0 http://eclipse.org/smarthome/schemas/binding-1.0.0.xsd">
 
-	<name>Hapcan Binding (alpha 0.1)</name>
+	<name>Hapcan Binding (alpha 0.2)</name>
 	<description>Binding for HAPCAN home automation system.</description>
 	<author>Marcin Wiatrak</author>
 

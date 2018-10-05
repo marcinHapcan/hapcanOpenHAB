@@ -55,5 +55,34 @@
 		<config-description-ref uri="thing-type:hapcan:device" />
 
 	</thing-type>
+	
+    <thing-type id="relay_10outputs">
+        <supported-bridge-type-refs>
+            <bridge-type-ref id="ethernet_interface" />
+        </supported-bridge-type-refs>
+
+        <label>HAPCAN Relay with 10 outputs (UNIV 3.9.0.x)</label>
+        <description>Module with 10 open collector outputs</description>
+
+        <channels>
+            <channel id="output1" typeId="switch_binary" />
+            <channel id="output2" typeId="switch_binary" />
+            <channel id="output3" typeId="switch_binary" />
+            <channel id="output4" typeId="switch_binary" />
+            <channel id="output5" typeId="switch_binary" />
+            <channel id="output6" typeId="switch_binary" />
+            <channel id="bus_voltage" typeId="bus_voltage" />
+            <channel id="cpu_voltage" typeId="cpu_voltage" />
+        </channels>
+
+        <properties>
+            <property name="vendor">HAPCAN (hapcan.com)</property>
+            <property name="modelId">UNIV 3.9.0.x</property>
+        </properties>
+        <representation-property>Serial Number</representation-property>
+
+        <config-description-ref uri="thing-type:hapcan:device" />
+
+    </thing-type>
 
 </thing:thing-descriptions>
